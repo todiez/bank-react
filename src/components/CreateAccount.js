@@ -60,7 +60,7 @@ function CreateAccount() {
               value={name}
               onChange={(e) => {
                 setName(e.currentTarget.value);
-                if (name.length > 0) setStatus(false);
+                // if (name.length > 0) setStatus(false);
               }}
             />
             <br />
@@ -74,7 +74,7 @@ function CreateAccount() {
               value={email}
               onChange={(e) => {
                 setEmail(e.currentTarget.value);
-                if (email.length > 0) setStatus(false);
+                // if (email.length > 0) setStatus(false);
               }}
             />
             <br />
