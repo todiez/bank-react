@@ -10,19 +10,10 @@ function CreateAccount() {
   const { bankUser, setBankUser } = useBankContext();
 
   const [show, setShow] = useState(true);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  //   function validate(field, label) {
-  //     if (!field) {
-  //       setStatus("Error: " + label);
-  //       setTimeout(() => setStatus(""), 100);
-  //       return false;
-  //     }
-  //     return true;
-  //   }
 
   function handleCreate() {
     if (name.length == 0) {
@@ -30,17 +21,16 @@ function CreateAccount() {
     } else if (email.length == 0) {
       alert("Please enter an email address");
     } else if (!email.includes("@") || !email.includes(".")) {
-        alert("Please enter a valid email address")
+      alert("Please enter a valid email address");
     } else if (password.length < 8) {
       alert("Password needs to be at least 8 characters long");
     } else {
-
       const id = bankUser.length;
       setBankUser([
         ...bankUser,
         { id: id, name: name, email: email, password: password, balance: 0 },
       ]);
-      alert("Successfully created Account")
+      alert("Successfully created Account");
       setShow(false);
     }
   }
@@ -57,7 +47,6 @@ function CreateAccount() {
       txtcolor="black"
       header="Create Account"
       title="Input necessary Data:"
-      status={status}
       body={
         show ? (
           <>
@@ -69,7 +58,10 @@ function CreateAccount() {
               id="name"
               placeholder="Enter name"
               value={name}
-              onChange={(e) => setName(e.currentTarget.value)}
+              onChange={(e) => {
+                setName(e.currentTarget.value);
+                if (name.length > 0) setStatus(false);
+              }}
             />
             <br />
             E-Mail Address
@@ -80,7 +72,10 @@ function CreateAccount() {
               id="email"
               placeholder="Enter email"
               value={email}
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              onChange={(e) => {
+                setEmail(e.currentTarget.value);
+                if (email.length > 0) setStatus(false);
+              }}
             />
             <br />
             Password
@@ -91,12 +86,16 @@ function CreateAccount() {
               id="password"
               placeholder="Enter password"
               value={password}
-              onChange={(e) => setPassword(e.currentTarget.value)}
+              onChange={(e) => {
+                setPassword(e.currentTarget.value);
+                if (password.length > 0) setStatus(false);
+              }}
             />
             <br />
             <button
               type="submit"
               className="btn btn-light"
+              disabled={status}
               onClick={handleCreate}
             >
               Create Account

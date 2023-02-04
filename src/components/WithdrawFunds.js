@@ -4,22 +4,15 @@ import Card from "./Card";
 
 function WithdrawFunds() {
   const { bankUser, setBankUser } = useBankContext();
-  console.log(bankUser);
 
   const [withdraw, setWithdraw] = useState(0);
+  const [status, setStatus] = useState(true);
 
   function handleWithdraw(e) {
     e.preventDefault();
-    console.log("handle withdraw fired");
-    console.log(typeof withdraw);
+    alert("Sucessfull Withdraw!");
     const withdrawInt = parseFloat(withdraw);
-    console.log(typeof withdrawInt);
-    console.log(withdrawInt);
-
-    const balance = bankUser[0].balance;
-    const newBalance = withdrawInt + bankUser[0].balance;
-
-    console.log(newBalance);
+    const newBalance = bankUser[0].balance - withdrawInt;
 
     setBankUser([
       {
@@ -55,16 +48,26 @@ function WithdrawFunds() {
                 type="number"
                 className="form-control"
                 id="withdraw"
-                min="-99999.0"
-                max="0.0"
+                min="0"
+                max="9999"
                 value={withdraw}
-                onChange={(e) => setWithdraw(e.currentTarget.value)}
+                onChange={(e) => {
+                  console.log(withdraw);
+                  setStatus(false);
+                  if (withdraw < 0) alert("Please enter a positive number");
+                  else if (withdraw > 1000) alert("Max withdraw amount per transaction is $1,000");
+                  else if (withdraw > bankUser[0].balance) alert("You are overdrafting your Account");
+                  else if (isNaN(withdraw))
+                    alert("Please insert a valid number");
+                  else setWithdraw(e.currentTarget.value);
+                }}
               />
             </div>
             <br />
             <button
               type="submit"
               className="btn btn-light"
+              disabled={status}
               onClick={handleWithdraw}
             >
               Withdraw

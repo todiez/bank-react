@@ -4,31 +4,32 @@ import Card from "./Card";
 
 function DepositFunds() {
   const { bankUser, setBankUser } = useBankContext();
-  console.log(bankUser);
-
-  const [ deposit, setDeposit ] = useState(0);
+  
+  const [deposit, setDeposit] = useState(0);
+  const [status, setStatus] = useState(true);
 
   function handleDeposit(e) {
     e.preventDefault();
-    console.log("handle Deposit fired")
-    console.log(typeof(deposit));
+    alert("Sucessfull Deposit!")
     const depositInt = parseFloat(deposit);
-    console.log(typeof(depositInt));
-    console.log(depositInt);
-
-
-    const balance = bankUser[0].balance;
     const newBalance = depositInt + bankUser[0].balance;
 
-    console.log(newBalance)
-
     setBankUser([
-        { id: 0, name: "Paz", email: "paz@dog.co", password: "password", balance: newBalance },
-    { id: 1, name: "IDa", email: "ida@dog.co", password: "password", balance: 200 }
-    ])
-
-
-
+      {
+        id: 0,
+        name: "Paz",
+        email: "paz@dog.co",
+        password: "password",
+        balance: newBalance,
+      },
+      {
+        id: 1,
+        name: "IDa",
+        email: "ida@dog.co",
+        password: "password",
+        balance: 200,
+      },
+    ]);
   }
 
   return (
@@ -47,16 +48,24 @@ function DepositFunds() {
                 type="number"
                 className="form-control"
                 id="deposit"
-                min="0.0"
+                min="0"
                 max="9999"
                 value={deposit}
-                onChange={(e) => setDeposit(e.currentTarget.value)}
+                onChange={(e) => {
+                  console.log(deposit);
+                  setStatus(false);
+                  if (deposit < 0) alert("Please enter a positive number");
+                  else if (isNaN(deposit))
+                    alert("Please insert a valid number");
+                  else setDeposit(e.currentTarget.value);
+                }}
               />
             </div>
             <br />
             <button
               type="submit"
               className="btn btn-light"
+              disabled={status}
               onClick={handleDeposit}
             >
               Deposit

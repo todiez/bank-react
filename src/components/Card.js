@@ -8,7 +8,7 @@ function Card(props) {
           {props.text && <p className="card-text">{props.text}</p>}
           {<hr/>}
           {props.body}
-          {/* {props.status && <div id="createStatus">{props.status}</div>} */}
+          {props.status && <div id="createStatus">{props.status}</div>}
         </div>
       </div>
     );
