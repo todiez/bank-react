@@ -40,6 +40,7 @@ function CreateAccount() {
         ...bankUser,
         { id: id, name: name, email: email, password: password, balance: 0 },
       ]);
+      alert("Successfully created Account")
       setShow(false);
     }
   }

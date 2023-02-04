@@ -12,7 +12,7 @@ function WithdrawFunds() {
     e.preventDefault();
     console.log("handle withdraw fired");
     console.log(typeof withdraw);
-    const withdrawInt = parseInt(withdraw);
+    const withdrawInt = parseFloat(withdraw);
     console.log(typeof withdrawInt);
     console.log(withdrawInt);
 

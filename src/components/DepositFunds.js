@@ -12,7 +12,7 @@ function DepositFunds() {
     e.preventDefault();
     console.log("handle Deposit fired")
     console.log(typeof(deposit));
-    const depositInt = parseInt(deposit);
+    const depositInt = parseFloat(deposit);
     console.log(typeof(depositInt));
     console.log(depositInt);
 
