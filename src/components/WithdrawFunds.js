@@ -54,9 +54,9 @@ function WithdrawFunds() {
                 onChange={(e) => {
                   console.log(withdraw);
                   setStatus(false);
-                  if (withdraw < 0) alert("Please enter a positive number");
+                  if (withdraw > bankUser[0].balance) alert("You are overdrafting your Account");
+                  else if (withdraw < 0) alert("Please enter a positive number");
                   else if (withdraw > 1000) alert("Max withdraw amount per transaction is $1,000");
-                  else if (withdraw > bankUser[0].balance) alert("You are overdrafting your Account");
                   else if (isNaN(withdraw))
                     alert("Please insert a valid number");
                   else setWithdraw(e.currentTarget.value);
