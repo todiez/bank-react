@@ -11,7 +11,7 @@ export const useBankContext = () => useContext(BankContext);
 export default function BankProvider({ children }) {
   const [bankUser, setBankUser] = useState([
     { id: 0, name: "Paz", email: "paz@dog.co", password: "pwPaz", balance: 500.00 },
-    { id: 1, name: "Ida", email: "ida@dog.co", password: "pwId", balance: 200.00 }
+    { id: 1, name: "Ida", email: "ida@dog.co", password: "pwIda", balance: 200.00 }
   ]);
   //could also be the clients of an application of the database
 
