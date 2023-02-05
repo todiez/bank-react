@@ -1,3 +1,4 @@
+import { Tooltip } from "bootstrap";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -52,11 +53,16 @@ function NavBar() {
     return state ? "nav-link active" : "nav-link";
   }
 
+  
+
   return (
     <>
     
       <ul className="nav nav-tabs" style={{background: "#e3f2fd", paddingTop: "6px"}}>
-        <li className="nav-item" >
+        
+      
+        <li className="nav-item">
+          
           <Link
             className={className(homeIsActive)}
             to="/"
@@ -64,10 +70,14 @@ function NavBar() {
             aria-current="page"
             style={{color: "black"}}
             onClick={toggleHomeActive}
+            data-toggle="tooltip" 
+            title="Go to Home"           
           >
             Bad Bank Home
           </Link>
+    
         </li>
+       
         <li className="nav-item">
           <Link
             className={className(creatAccIsActive)}
@@ -75,6 +85,8 @@ function NavBar() {
             name="CreateAccount"
             style={{color: "black"}}
             onClick={toggleCreatAccActive}
+            data-toggle="tooltip" 
+            title="Create a new Account for you"   
           >
             Create Account
           </Link>
@@ -86,6 +98,8 @@ function NavBar() {
             to="/Deposit"
             style={{color: "black"}}
             onClick={toggleDepositActive}
+            data-toggle="tooltip" 
+            title="Do you like cash? Then take it!"  
           >
             Deposit
           </Link>
