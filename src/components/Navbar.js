@@ -53,40 +53,36 @@ function NavBar() {
     return state ? "nav-link active" : "nav-link";
   }
 
-  
-
   return (
     <>
-    
-      <ul className="nav nav-tabs" style={{background: "#e3f2fd", paddingTop: "6px"}}>
-        
-      
+      <ul
+        className="nav nav-tabs"
+        style={{ background: "#e3f2fd", paddingTop: "6px" }}
+      >
         <li className="nav-item">
-          
           <Link
             className={className(homeIsActive)}
             to="/"
             name="Home"
             aria-current="page"
-            style={{color: "black"}}
+            style={{ color: "black" }}
             onClick={toggleHomeActive}
-            data-toggle="tooltip" 
-            title="Go to Home"           
+            data-toggle="tooltip"
+            title="Go to Home"
           >
             Bad Bank Home
           </Link>
-    
         </li>
-       
+
         <li className="nav-item">
           <Link
             className={className(creatAccIsActive)}
             to="/CreateAccount"
             name="CreateAccount"
-            style={{color: "black"}}
+            style={{ color: "black" }}
             onClick={toggleCreatAccActive}
-            data-toggle="tooltip" 
-            title="Create a new Account for you"   
+            data-toggle="tooltip"
+            title="Create a new Account for you"
           >
             Create Account
           </Link>
@@ -96,10 +92,10 @@ function NavBar() {
             className={className(depositIsActive)}
             name="History"
             to="/Deposit"
-            style={{color: "black"}}
+            style={{ color: "black" }}
             onClick={toggleDepositActive}
-            data-toggle="tooltip" 
-            title="Do you like cash? Then take it!"  
+            data-toggle="tooltip"
+            title="Give us your cash!"
           >
             Deposit
           </Link>
@@ -109,8 +105,10 @@ function NavBar() {
             className={className(withdrawIsActive)}
             name="alldatagrade"
             to="/Withdraw"
-            style={{color: "black"}}
+            style={{ color: "black" }}
             onClick={toggleWithdrawActive}
+            data-toggle="tooltip"
+            title="Do you like cash? Then take it!"
           >
             Withdraw
           </Link>
@@ -120,8 +118,10 @@ function NavBar() {
             className={className(allDataIsActive)}
             name="alldata"
             to="/Alldata"
-            style={{color: "black"}}
+            style={{ color: "black" }}
             onClick={toggleAllDataActive}
+            data-toggle="tooltip"
+            title="This is the truth!"
           >
             All Data
           </Link>
